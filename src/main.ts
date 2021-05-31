@@ -114,11 +114,14 @@ type accountName =
   | "Utility"
   | "Pengeluaran rutin";
 
+// specify file path
+const FILE_PATH = "../Financial Statement - Toko Faiz Jaya Desember 2020.xlsx";
+
 async function main() {
   const args = process.argv.slice(2);
 
   const workbook = new ExcelJS.Workbook();
-  await workbook.xlsx.readFile("../sample2.xlsx");
+  await workbook.xlsx.readFile(FILE_PATH);
   const journal = workbook.getWorksheet("Journal");
 
   const allEntries: entry[] = [];
@@ -306,7 +309,7 @@ async function main() {
   });
 
   // save in the same file
-  await workbook.xlsx.writeFile("../sample2.xlsx");
+  await workbook.xlsx.writeFile(FILE_PATH);
 }
 
 main();
